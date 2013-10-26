@@ -10,7 +10,7 @@ import com.android.volley.toolbox.Volley;
  */
 public class NfcQAplication extends Application {
 
-    private RequestQueue volleyQueue;
+    private static RequestQueue volleyQueue;
 
     @Override
     public void onCreate() {
@@ -18,7 +18,7 @@ public class NfcQAplication extends Application {
         volleyQueue = Volley.newRequestQueue(this);
     }
 
-    public RequestQueue getVolleyQueue() {
+    public static RequestQueue getVolleyQueue() {
         return volleyQueue;
     }
 }
