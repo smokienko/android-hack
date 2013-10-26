@@ -39,7 +39,8 @@ public class VolleyRequest {
     }
 
     public static void loginUser(User user, VolleyResponse listener){
-
+        String url = String.format(LOGIN,user.getName(),user.getPass());
+        addPostRequest(url,listener);
     }
 
 
