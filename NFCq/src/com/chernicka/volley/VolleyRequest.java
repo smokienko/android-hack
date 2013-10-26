@@ -17,7 +17,10 @@ import org.json.JSONObject;
  */
 public class VolleyRequest {
 
+    private static final String TAG = VolleyRequest.class.getCanonicalName();
     private static final String LOGIN = "http://etc.pp.ua/?a=auth&login=%s&password=%s";
+    private static final String REGISTER_GOR_QUEST = "http://etc.pp.ua/?a=getQuest&id=%s&w=%s&h=%s";
+    private static final String QUEST_COMPLITED = "http://etc.pp.ua/?a=questComplete&id=%s";
 
 
     private static void addGetRequest(String url,final VolleyResponse listener){
@@ -42,9 +45,23 @@ public class VolleyRequest {
 
     public static void loginUser(User user, VolleyResponse listener){
         String url = String.format( LOGIN,user.getName(),user.getPass());
-        Log.d("loginUser",url);
+        Log.d(TAG,url);
         addPostRequest(url, listener);
     }
+
+    public static void registerForQuest(User user, VolleyResponse listener){
+        String url = String.format(REGISTER_GOR_QUEST,user.getId(),user.getLatitude(),user.getLongtitude());
+        Log.d(TAG,url);
+        addPostRequest(url, listener);
+    }
+
+    public static void questComplited(User user, VolleyResponse listener){
+        String url = String.format(QUEST_COMPLITED, user.getId());
+        Log.d(TAG,url);
+        addPostRequest(url,listener);
+    }
+
+
 
 
 }

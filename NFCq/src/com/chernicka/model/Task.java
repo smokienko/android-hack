@@ -7,13 +7,23 @@ import org.json.JSONObject;
  */
 public class Task {
 
+    private static final String QUESTION = "question";
+    private static final String ANSWER = "answer";
+    private static final String POINT_W = "point_w";
+    private static final String POINT_H = "point_h";
+    private static final String TIMEOUT = "timeout";
+    private static final String STATUS = "status";
+    private static final String ERROR = "error";
+
     private String partId;
     private String fullId;
     private long taskDuration;
-    private int latitude;
-    private int longtitude;
+    private double latitude;
+    private double longtitude;
+    private long time;
     private String response;
     private String taskText;
+    private boolean taskstatus;
 
     public void setResponse(String response) {
         this.response = response;
@@ -22,6 +32,14 @@ public class Task {
     public String getResponse() {
 
         return response;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public long getTime() {
+        return time;
     }
 
     public void setPartId(String partId) {
@@ -36,11 +54,11 @@ public class Task {
         this.taskDuration = taskDuration;
     }
 
-    public void setLatitude(int latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public void setLongtitude(int longtitude) {
+    public void setLongtitude(double longtitude) {
         this.longtitude = longtitude;
     }
 
@@ -60,11 +78,11 @@ public class Task {
         return taskDuration;
     }
 
-    public int getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public int getLongtitude() {
+    public double getLongtitude() {
         return longtitude;
     }
 
@@ -72,12 +90,30 @@ public class Task {
         return taskText;
     }
 
+    public void setTaskstatus(boolean taskstatus) {
+        this.taskstatus = taskstatus;
+    }
+
+    public boolean isTaskstatus() {
+        return taskstatus;
+    }
+
     public void setStartTaskDataFromJson(JSONObject object){
         //TODO smokienko start parse tasks
     }
 
-    public void setTaskQuestionFromJson(JSONObject objext){
+    public void setTaskQuestionFromJson(JSONObject object) throws Exception{
         //TODO smokienko end parse tasks
+        setTaskstatus(object.getBoolean(STATUS));
+        if(isTaskstatus()){
+            setTaskText(object.getString(QUESTION));
+            setResponse(object.getString(ANSWER));
+            setLongtitude(object.getDouble(POINT_W));
+            setLatitude(object.getDouble(POINT_H));
+            setTime(object.getLong(TIMEOUT));
+        } else {
+            throw new Exception("No user found");
+        }
     }
 
 
