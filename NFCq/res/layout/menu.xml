@@ -14,7 +14,9 @@
         android:id="@+id/btnStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/btn_empty"
         android:enabled="false"
-        android:text="Start" />
+        android:text="Start"
+        android:textColor="@android:color/black" />
 
 </LinearLayout>

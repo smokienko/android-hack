@@ -12,6 +12,7 @@ public class QuestActivity extends Activity implements OnClickListener {
 	private Button btnSend;
 	private EditText edtAnswer;
 	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,6 +34,8 @@ public class QuestActivity extends Activity implements OnClickListener {
 	}
 	
 	private void sendAnswer(){
-		
+		//edtAnswer.getText().toString()
+		//TODO send answer to server
 	}	
+	
 }

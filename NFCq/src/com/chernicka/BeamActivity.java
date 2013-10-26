@@ -13,11 +13,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Parcelable;
 import android.text.format.Time;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class BeamActivity extends Activity implements
-		CreateNdefMessageCallback, OnNdefPushCompleteCallback {
+		CreateNdefMessageCallback, OnNdefPushCompleteCallback, OnClickListener {
 
 	public static String MY_ID = "my_id";
 	public static String HIS_ID = "his_id";
@@ -26,11 +29,16 @@ public class BeamActivity extends Activity implements
 	TextView mInfoText;
 	private static final int MESSAGE_SENT = 1;
 	private String myId, hisId;
+	private Button btnStartQuest;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_beam);
+		btnStartQuest = (Button)findViewById(R.id.btn_start_quest);
+		btnStartQuest.setOnClickListener(this);
+		
+		
 		mInfoText = (TextView) findViewById(R.id.textView);
 		// Check for available NFC Adapter
 		mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -113,6 +121,20 @@ public class BeamActivity extends Activity implements
 		NdefMessage msg = (NdefMessage) rawMsgs[0];
 		// record 0 contains the MIME type, record 1 is the AAR, if present
 		mInfoText.setText(new String(msg.getRecords()[0].getPayload()));
+		btnStartQuest.setEnabled(true);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btn_start_quest:
+			Intent intent = new Intent(getApplicationContext(), QuestActivity.class);
+			startActivity(intent);
+			break;
+
+		default:
+			break;
+		}
 	}
 
 }

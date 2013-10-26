@@ -11,4 +11,13 @@
         android:gravity="center"
         android:text="Find yor opponent" />
 
+    <Button
+        android:id="@+id/btn_start_quest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_empty"
+        android:enabled="false"
+        android:text="startquest"
+        android:textColor="@android:color/black" />
+
 </LinearLayout>
