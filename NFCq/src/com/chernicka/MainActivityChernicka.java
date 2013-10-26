@@ -1,16 +1,20 @@
 package com.chernicka;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 import com.google.android.gms.maps.MapFragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-public class MainActivityChernicka extends Activity {
+public class MainActivityChernicka extends Activity implements OnClickListener {
 	private MapFragment mapFragment;
 	private SlidingMenu menu ;
+	private Button btnStart;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,9 @@ public class MainActivityChernicka extends Activity {
         menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
         menu.setMenu(R.layout.menu);
         
+        btnStart = (Button)findViewById(R.id.btnStart);
+        btnStart.setOnClickListener(this);
+        
     }
 
 
@@ -42,6 +49,20 @@ public class MainActivityChernicka extends Activity {
 		}
 		// TODO Auto-generated method stub
 		return super.onOptionsItemSelected(item);
+	}
+
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btnStart:
+			Intent intent = new Intent(getApplicationContext(), BeamActivity.class);
+			startActivity(intent);
+			break;
+
+		default:
+			break;
+		}
 	}
 
 
