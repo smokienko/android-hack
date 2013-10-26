@@ -2,17 +2,22 @@ package com.chernicka;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import com.google.android.gms.maps.MapFragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 public class MainActivityChernicka extends Activity {
-
+	private MapFragment mapFragment;
+	private SlidingMenu menu ;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main_activity_chernicka);
-        
-        SlidingMenu menu = new SlidingMenu(this);
+        setContentView(R.layout.activity_main_activity_chernicka);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setDisplayShowHomeEnabled(true);
+        menu = new SlidingMenu(this);
         menu.setMode(SlidingMenu.LEFT);
         menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         menu.setShadowWidthRes(R.dimen.shadow_width);
@@ -24,6 +29,22 @@ public class MainActivityChernicka extends Activity {
     }
 
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			menu.toggle();
+			break;
+
+		default:
+			break;
+		}
+		// TODO Auto-generated method stub
+		return super.onOptionsItemSelected(item);
+	}
+
+
+    
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        // Inflate the menu; this adds items to the action bar if it is present.
