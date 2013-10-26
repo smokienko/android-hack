@@ -5,4 +5,10 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
 
+    <string name="registration">Registration/Login</string>
+    <string name="registration_submit">Submit</string>
+    <string name="registration_hint_login">Login</string>
+    <string name="registration_hint_password">Password</string>
+    <string name="registration_hint_confirm_password">Confirm password</string>
+
 </resources>

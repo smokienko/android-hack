@@ -2,15 +2,22 @@ package com.chernicka;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 
+import com.android.volley.toolbox.Volley;
+import com.chernicka.model.User;
+import com.chernicka.volley.VolleyRequest;
+import com.chernicka.volley.VolleyResponse;
 import com.google.android.gms.maps.MapFragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
+import org.json.JSONObject;
+
 public class MainActivityChernicka extends Activity {
 	private MapFragment mapFragment;
-	private SlidingMenu menu ;
+	private SlidingMenu menu;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {

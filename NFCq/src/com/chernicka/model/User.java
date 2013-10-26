@@ -7,6 +7,10 @@ import org.json.JSONObject;
  */
 public class User {
 
+    private static final String SCORE = "score";
+    private static final String STATUS = "status";
+    private static final String ID = "result";
+
     private String id;
     private String name;
     private String pass;
@@ -74,6 +78,14 @@ public class User {
         this.longtitude = longtitude;
     }
 
-    public void setUserDataFromJson(JSONObject object){}
+    public void setUserDataFromJson(JSONObject object) throws Exception {
+        if (object.getBoolean(STATUS)){
+            setScore(object.getString(SCORE));
+            setId(object.getString(ID));
+        } else {
+            throw new Exception("Ooops!! Serrver error");
+        }
+
+    }
 
 }
