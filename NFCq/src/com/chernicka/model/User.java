@@ -88,4 +88,12 @@ public class User {
 
     }
 
+    public void setUserNewScoreFromJson(JSONObject object) throws Exception{
+        if (object.getBoolean(STATUS)){
+            setScore(object.getString(ID));
+        } else {
+            throw new Exception("Ooops!! Serrver error");
+        }
+    }
+
 }
